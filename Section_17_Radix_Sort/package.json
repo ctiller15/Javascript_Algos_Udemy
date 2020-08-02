@@ -1,0 +1,16 @@
+{
+	"scripts": {
+		"test": "jest",
+		"watch": "jest --watch"
+	},
+	"devDependencies": {
+		"@babel/plugin-syntax-pipeline-operator": "^7.10.4",
+		"jest": "^26.1.0"
+	},
+	"dependencies": {
+		"@babel/cli": "^7.10.5",
+		"@babel/core": "^7.11.0",
+		"@babel/plugin-proposal-pipeline-operator": "^7.10.5",
+		"@babel/preset-stage-1": "^7.8.3"
+	}
+}
