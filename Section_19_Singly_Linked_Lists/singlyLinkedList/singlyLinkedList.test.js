@@ -36,3 +36,25 @@ describe('push', () => {
 		});
 	});
 });
+
+describe('pop', () => {
+	const testCases = [
+		{
+			pushedVals: [],
+			removed: undefined
+		},
+	];
+
+	testCases.forEach(test => {
+		it(`pops off the last element and sets the tail of ${test.removed}`, () => {
+			const linkedList = new SinglyLinkedList();
+			test.pushedVals.forEach(val => {
+				linkedList.push(val);
+			});
+
+			const removed = linkedList.pop();
+			
+			expect(removed).toBe(test.removed);
+		});
+	});
+});
