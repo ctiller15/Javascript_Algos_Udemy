@@ -37,6 +37,37 @@ class HashTable {
 
 		return undefined;
 	}
+
+	keys(){
+		const foundKeys = [];
+
+		for(let i = 0; i < this.keyMap.length; i++){
+			if(this.keyMap[i]){
+				for(let j = 0; j < this.keyMap[i].length; j++){
+					foundKeys.push(this.keyMap[i][j][0]);
+				}
+			}
+		}
+
+		return foundKeys;
+	}
+
+	values(){
+		const foundValues = [];
+
+		for(let i = 0; i < this.keyMap.length; i++){
+			if(this.keyMap[i]){
+				for(let j = 0; j < this.keyMap[i].length; j++){
+					const checkVal = this.keyMap[i][j][1];
+					if(foundValues.indexOf(checkVal) === -1){
+						foundValues.push(checkVal);
+					}
+				}
+			}
+		}
+
+		return foundValues;
+	}
 }
 
 module.exports = HashTable;

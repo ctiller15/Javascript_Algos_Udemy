@@ -115,3 +115,121 @@ describe('get', () => {
 		});
 	});
 });
+
+describe('keys', () => {
+	const testCases = [
+		{
+			init: [
+				["darkBlue", "darkBlue"]
+			],
+			result: ['darkBlue'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"]],
+			result: ['darkBlue', 'pink'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"]
+			],
+			result: ['darkBlue', 'pink', 'cyan'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"],
+				["red", "red"]
+			],
+			result: ['darkBlue', 'pink', 'cyan', 'red']
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"],
+				["red", "red"],
+				["duplicate_key", "red"]
+			],
+			result: ['darkBlue', 'pink', 'cyan', 'red', 'duplicate_key']
+		},
+	];
+
+	testCases.forEach(test => {
+		it(`finds the value ${test.search}`, () => {
+			const table = new HashTable(5);
+
+			test.init.forEach(val => {
+				table.set(val[0], val[1]);
+			});
+
+			result = table.keys();
+
+			expect(result.every(v => test.result.includes(v))).toBe(true);
+			expect(result.length).toBe(test.result.length);
+		});
+	});
+});
+
+describe('values', () => {
+	const testCases = [
+		{
+			init: [
+				["darkBlue", "darkBlue"]
+			],
+			result: ['darkBlue'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"]],
+			result: ['darkBlue', 'pink'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"]
+			],
+			result: ['darkBlue', 'pink', 'cyan'],
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"],
+				["red", "red"]
+			],
+			result: ['darkBlue', 'pink', 'cyan', 'red']
+		},
+		{
+			init: [
+				["darkBlue", "darkBlue"],
+				["pink", "pink"],
+				["cyan", "cyan"],
+				["red", "red"],
+				["duplicate_key", "red"]
+			],
+			result: ['darkBlue', 'pink', 'cyan', 'red']
+		},
+	];
+
+	testCases.forEach(test => {
+		it(`finds the values for [${test.init}]`, () => {
+			const table = new HashTable(5);
+
+			test.init.forEach(val => {
+				table.set(val[0], val[1]);
+			});
+
+			result = table.values();
+
+			expect(result.every(v => test.result.includes(v))).toBe(true);
+			expect(result.length).toBe(test.result.length);
+		});
+	});
+});
